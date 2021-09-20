@@ -35,6 +35,6 @@ jobs:
      with:
       token: ${{ secrets.PUSH_TOKEN }}
    - name: Push Branch
-     run: git push origin https://github.com/MaureenOrg/Actions/tree/add-jest:test-ci
+     run: git push origin vul:test-ci
 
 
