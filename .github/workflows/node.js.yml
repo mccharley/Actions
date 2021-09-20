@@ -33,7 +33,10 @@ jobs:
    steps:
    - uses: actions/checkout@v2
      with:
-      token: ${{ secrets.PUSH_TOKEN }}
+        ref: 'master'
+        token: ${{ secrets.PUSH_TOKEN }}
+   - name: fetch
+     run: git fetch --prune --unshallow
    - name: Push Branch
      run: git push origin test-ci:add-jest
 
