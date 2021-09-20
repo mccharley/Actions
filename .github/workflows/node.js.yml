@@ -1,6 +1,7 @@
 name: Node.js CI
 
 on:
+  workflow_dispatch:
   workflow_run:
     workflows: ["Dependabot PR Check"]
     types:
@@ -25,3 +26,15 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+  
+  pushBranch:
+  
+   runs-on: ubuntu-latest
+   steps:
+   - uses: actions/checkout@v2
+     with:
+      token: ${{ secrets.PUSH_TOKEN }}
+   - name: Push To Acceptance
+     run: git push origin add-jest:test-ci
+
+
